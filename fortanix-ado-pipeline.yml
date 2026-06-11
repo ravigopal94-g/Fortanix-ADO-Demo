@@ -1,0 +1,22 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - script: echo Fortanix Secret Management!
+    displayName: 'Fortanix Azure DevOps extension task'
+  
+  - task: Fortanix-Secret-Management@1
+    inputs:
+      FORTANIX_API_ENDPOINT: '$(FORTANIX_API_ENDPOINT)'
+      FORTANIX_API_KEY: '$(FORTANIX_API_KEY)'
+      FORTANIX_SECURITY_OBJECT_NAME: 'ADF-DEMO'
+      FORTANIX_SECURITY_OBJECT: 'FORTANIX_SECURITY_OBJECT'
+  
